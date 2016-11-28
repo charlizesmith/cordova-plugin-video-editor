@@ -29,8 +29,8 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
-
-import net.ypresto.androidtranscoder.MediaTranscoder;
+/* 
+import net.ypresto.androidtranscoder.MediaTranscoder; */
 
 /**
  * VideoEditor plugin for Android
@@ -174,7 +174,7 @@ public class VideoEditor extends CordovaPlugin {
 
                     FileInputStream fin = new FileInputStream(inFile);
 
-                    MediaTranscoder.Listener listener = new MediaTranscoder.Listener() {
+                    /* MediaTranscoder.Listener listener = new MediaTranscoder.Listener() {
                         @Override
                         public void onTranscodeProgress(double progress) {
                             Log.d(TAG, "transcode running " + progress);
@@ -227,7 +227,7 @@ public class VideoEditor extends CordovaPlugin {
                             callback.error(exception.toString());
                             Log.d(TAG, "transcode exception", exception);
                         }
-                    };
+                    }; */
 
                     MediaMetadataRetriever mmr = new MediaMetadataRetriever();
                     mmr.setDataSource(videoSrcPath);
@@ -239,9 +239,9 @@ public class VideoEditor extends CordovaPlugin {
                     float videoWidth = Float.parseFloat(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH));
                     float videoHeight = Float.parseFloat(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT));
 
-                    MediaTranscoder.getInstance().transcodeVideo(fin.getFD(), outputFilePath,
+                   /*  MediaTranscoder.getInstance().transcodeVideo(fin.getFD(), outputFilePath,
                             new CustomAndroidFormatStrategy(videoBitrate, fps, width, height), listener, videoDuration);
-
+ */
                 } catch (Throwable e) {
                     Log.d(TAG, "transcode exception ", e);
                     callback.error(e.toString());
